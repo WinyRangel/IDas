@@ -16,3 +16,6 @@ Reloj de seguimiento
 |Sensor de Ritmo Cardíaco|![image](https://github.com/WinyRangel/IDas/assets/99991728/f889887d-9a4e-450f-bf1c-2d0fae48d5bc)|Sensor para medir la frecuencia cardíaca en tiempo real.|1|
 |Botón|![image](https://github.com/WinyRangel/IDas/assets/99991728/5e0034fe-8867-4fdc-8965-af97f455abad)|Botón para encender alerta en el buzzer|1|
 |LED RGB|![image](https://github.com/WinyRangel/IDas/assets/99991728/4cf74d34-a2bf-4ca7-8183-49ade7d2bbad)|LED RGB para mostrar diferentes colores de estado.|1|
+
+## Prototipo
+![Luxury Modern Swiss Watch Clock Logo (1)](https://github.com/WinyRangel/IDas/assets/99991728/47dc83db-daef-4e52-a718-72d9fa2afdd2)
