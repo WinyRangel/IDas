@@ -9,10 +9,9 @@ Reloj de seguimiento
   - Flitzing
   - Wowki
 ## Hardware empleado
-------------------------------------
 |Nombre|Imágen|Descripción|Cantidad|
-------------------------------------
+|------------------------------------|
 |Microcontrolador ESP32|![Uploading image.png…]() | 1 |
----------------------------
+|------------------------------------|
 |    |      |      |       |
 ---------------------------
