@@ -1,0 +1,34 @@
+#define BUTTON_PIN 4    // ESP32 GPIO16 pin connected to button's pin
+#define BUZZER_PIN 23   // ESP32 GPIO21 pin connected to Buzzer's pin
+#define LED_RED_PIN 35  // Pin del ESP32 conectado al LED Rojo del RGB
+#define LED_GREEN_PIN 12 // Pin del ESP32 conectado al LED Verde del RGB
+#define LED_BLUE_PIN 14 // Pin del ESP32 conectado al LED Azul del RGB
+
+bool buzzerOn = false; // Variable para rastrear si el zumbador está encendido o apagado
+
+void setup() {
+  Serial.begin(9600);                  // Inicializar el puerto serie
+  pinMode(BUTTON_PIN, INPUT_PULLUP);   // Configurar el pin del ESP32 en modo entrada con pull-up
+  pinMode(BUZZER_PIN, OUTPUT);         // Configurar el pin del ESP32 en modo salida
+  pinMode(LED_RED_PIN, OUTPUT);        // Configurar el pin del ESP32 en modo salida para el LED Rojo
+  pinMode(LED_GREEN_PIN, OUTPUT);      // Configurar el pin del ESP32 en modo salida para el LED Verde
+  pinMode(LED_BLUE_PIN, OUTPUT);       // Configurar el pin del ESP32 en modo salida para el LED Azul
+}
+
+void loop() {
+  int buttonState = digitalRead(BUTTON_PIN); // Leer el estado del botón
+
+  if (buttonState == LOW) { // El botón está presionado
+    Serial.println("El botón está siendo presionado");
+    if (!buzzerOn) { // Si el zumbador está apagado
+      digitalWrite(BUZZER_PIN, HIGH); // Encender el zumbador
+      digitalWrite(LED_BLUE_PIN, HIGH); // Encender el LED Rojo
+      buzzerOn = true; // Actualizar el estado del zumbador
+    } else { // Si el zumbador está encendido
+      digitalWrite(BUZZER_PIN, LOW); // Apagar el zumbador
+      digitalWrite(LED_BLUE_PIN, LOW); // Apagar el LED Rojo
+      buzzerOn = false; // Actualizar el estado del zumbador
+    }
+    delay(200); // Retardo de rebote
+  }
+}
