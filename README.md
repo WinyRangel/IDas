@@ -19,3 +19,5 @@ Reloj de seguimiento
 
 ## Prototipo
 ![Luxury Modern Swiss Watch Clock Logo (1)](https://github.com/WinyRangel/IDas/assets/99991728/47dc83db-daef-4e52-a718-72d9fa2afdd2)
+## Arquitectura de proyecto
+![Captura de pantalla 2024-06-02 215934](https://github.com/WinyRangel/IDas/assets/99991728/bdbfe43f-21c6-4b24-b6fd-1ec68b6af804)
