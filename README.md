@@ -9,7 +9,7 @@ Reloj de seguimiento
   - Flitzing
   - Wowki
 ## Hardware empleado
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
+|          Nombre         |    Imágen     | Descripción  | Cantidad |
+| ----------------------- | ------------- | ------------- | ------------- |
+| Microcontrolador ESP32  |![image](https://github.com/WinyRangel/IDas/assets/99991728/af2937e4-c3f7-4a24-ad03-937cf98bc57c)|Microcontrolador para el procesamiento de datos y conectividad Wi-Fi y Bluetooth.|
 | Content Cell  | Content Cell  |
