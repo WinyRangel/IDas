@@ -11,7 +11,4 @@ Reloj de seguimiento
 ## Hardware empleado
 |Nombre|Imágen|Descripción|Cantidad|
 |------------------------------------|
-|Microcontrolador ESP32|![Uploading image.png…]() | 1 |
-|------------------------------------|
-|    |      |      |       |
----------------------------
+|Microcontrolador ESP32|![Uploading image.png…]() | Microcontrolador para el procesamiento de datos y conectividad Wi-Fi y Bluetooth.|1 |
