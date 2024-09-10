@@ -31,7 +31,7 @@ _"Cangurera inteligente aspira a ser una cangurera inteligente avanzada, ùtil y
 
 
 ## Prototipo
-![Orange Illustration Food Popcorn Logo (1)](https://github.com/user-attachments/assets/697453c5-8d2b-482b-a2db-c64c77d318df)
+![Orange Illustration Food Popcorn Logo (1)](https://github.com/alyrojas/images/blob/main/prototipo.png)
 
 ## Arquitectura de proyecto
 ![Esquema Copo de Nieve-Página-5 drawio](https://github.com/WinyRangel/IDas/assets/99991728/24561f3a-21d2-49a6-a3f5-a93233b6d6c4)
