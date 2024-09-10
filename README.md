@@ -34,7 +34,19 @@ _"Cangurera inteligente aspira a ser una cangurera inteligente avanzada, ùtil y
 ![Orange Illustration Food Popcorn Logo (1)](https://github.com/alyrojas/images/blob/main/prototipo.png)
 
 ## Arquitectura de proyecto
+![Esquema Copo de Nieve-Página-5 drawio](## Prototipo
+![Orange Illustration Food Popcorn Logo (1)](https://github.com/alyrojas/images/blob/main/prototipo.png)
+
+## Arquitectura de proyecto
 ![Esquema Copo de Nieve-Página-5 drawio](https://github.com/WinyRangel/IDas/assets/99991728/24561f3a-21d2-49a6-a3f5-a93233b6d6c4)
+
+## Tablero Kanban
+![Captura de pantalla 2024-06-03 142519](https://github.com/WinyRangel/IDas/assets/99991728/1d8cbdec-8984-49c2-9f23-659cb7d19aa3)
+
+## Circuito
+
+![Captura de pantalla 2024-06-03 142609](https://github.com/WinyRangel/IDas/assets/99991728/e227ae79-1f59-4015-8efe-4efe0d628d66)
+)
 
 ## Tablero Kanban
 ![Captura de pantalla 2024-06-03 142519](https://github.com/WinyRangel/IDas/assets/99991728/1d8cbdec-8984-49c2-9f23-659cb7d19aa3)
