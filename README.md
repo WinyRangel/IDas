@@ -1,11 +1,11 @@
-# Tracking smart watch 
-Documentación Tracking smart watch
+# Cangurera inteligente 
+Documentación Cangurera Inteligente
 ## Integrantes
 - Alyne Elizabeth Rojas Gloria
 - Winy Daniela Manzano Rangel
 - Sandra Michel Hernàndez Chiquito
 ## Visión 
-_"Tracking Smart Watch aspira a ser un termo inteligente avanzado, ùtil y práctico del mercado, ofreciendo una herramienta indispensable y confiable para cada usuario, mejorando su calidad de vida a través de la tecnología innovadora y el diseño intuitivo."_
+_"Cangurera inteligente aspira a ser una cangurera inteligente avanzada, ùtil y práctica del mercado, ofreciendo una herramienta indispensable y confiable para cada usuario, mejorando su calidad de vida a través de la tecnología innovadora y el diseño intuitivo."_
 ## Software empleado
   - Node-RED
   - Arduino IDE
