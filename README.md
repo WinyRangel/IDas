@@ -41,5 +41,5 @@ _"Cangurera inteligente aspira a ser una cangurera inteligente avanzada, ùtil y
 
 ## Circuito
 
-![Captura de pantalla 2024-06-03 142609](https://github.com/WinyRangel/IDas/assets/99991728/e227ae79-1f59-4015-8efe-4efe0d628d66)
+![Captura de pantalla 2024-06-03 142609](https://github.com/alyrojas/images/blob/main/circuito.png)
 
