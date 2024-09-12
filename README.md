@@ -43,12 +43,46 @@ _"Cangurera inteligente aspira a ser una cangurera inteligente avanzada, ùtil y
 ## Esquema de base de datos
 ![Esquema Copo de Nieve-Página-6 drawio](https://github.com/user-attachments/assets/0f135570-b21a-4841-be85-8d222f895943)
 
+## Flutter aplicación LINK
+[Dashboard-MQTT-Client](https://github.com/WinyRangel/IDas/tree/a5056dc865731d3fec41d5eb8eeab008d679670e/Dashboard-MQTT-Client)
+## Arduino código
+[Codigo-Arduino](https://github.com/WinyRangel/IDas/blob/a5056dc865731d3fec41d5eb8eeab008d679670e/sketch_cangurera.ino)
+
+## Base de datos SCRIPT
+[sensors_db](https://github.com/WinyRangel/IDas/blob/a5056dc865731d3fec41d5eb8eeab008d679670e/sensors_db.sql)
+
+## Nodos Node-Red json
+[nodos](https://github.com/WinyRangel/IDas/blob/b9f454cb8b673e83811b00f0edd33d6466701088/nodos_node.json)
+
+## Nodos
+![image](https://github.com/user-attachments/assets/7ac31b21-01e6-4593-a5cc-fdb6c13579dc)
+
+![image](https://github.com/user-attachments/assets/9a926219-b19c-4f72-b62d-645382aa4ac1)
+
+![image](https://github.com/user-attachments/assets/1b4089f2-34fb-4709-acbc-d4e5b6cc9fc6)
+
+## Realizacion DB
+![Captura de pantalla 2024-08-23 113441](https://github.com/user-attachments/assets/33514893-8de9-41cd-8137-b44d0dbed7e4)
 
 ## Arquitectura de proyecto
 ![Esquema Copo de Nieve-Página-5 drawio](https://github.com/alyrojas/images/blob/main/arquitectura.png)
 
+## Carta de agradecimiento
+![image](https://github.com/user-attachments/assets/fc91eda6-5a39-4c39-ae31-5a68ef0b4720)
+
+## Vídeos
+[Demostración](https://drive.google.com/file/d/1QCovh8tThxgxo85FN-2krWmbMhWsbuw0/view?usp=drive_link)
+
+## SER
+[Winy Daniela Manzano Rangel - 12211100670](https://drive.google.com/drive/folders/1hf6th6Lo1B5DpWCJRa8G2iKDrEYQYJ4X?usp=drive_link)
+
 ## Tablero Kanban
 ![Captura de pantalla 2024-06-03 142519](https://github.com/WinyRangel/IDas/assets/99991728/1d8cbdec-8984-49c2-9f23-659cb7d19aa3)
+
+## Dashboard
+![Imagen de WhatsApp 2024-09-11 a las 23 40 14_b63117d8](https://github.com/user-attachments/assets/e24828e7-388a-4ddc-909f-0b741a36ce72)
+![Imagen de WhatsApp 2024-09-11 a las 23 40 20_a2c691ff](https://github.com/user-attachments/assets/81bc20da-d467-40a3-a82d-c9081047b7f9)
+
 
 ## Circuito
 
