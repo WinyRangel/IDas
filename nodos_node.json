@@ -1,0 +1,935 @@
+[
+    {
+        "id": "a8cda6e854bd2324",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9667dacbac68d5c1",
+        "type": "mqtt in",
+        "z": "a8cda6e854bd2324",
+        "name": "",
+        "topic": "sensor/humidity",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "f638a2104de91bc9",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 160,
+        "y": 900,
+        "wires": [
+            [
+                "f7e9e550578a6cd6",
+                "b82661269c4f335e"
+            ]
+        ]
+    },
+    {
+        "id": "f7e9e550578a6cd6",
+        "type": "function",
+        "z": "a8cda6e854bd2324",
+        "name": "Humidity",
+        "func": "try {\n    var humidity = parseFloat(msg.payload);\n    var sensorId = 5;\n    var userId = 1;\n\n    if (isNaN(humidity)) throw \"Invalid humidity value\";\n\n    msg.topic = `INSERT INTO sensor_details (sensor_id, reading, user_id) VALUES (${sensorId}, ${humidity}, ${userId});`;\n} catch (error) {\n    msg.payload = `SQL Error: ${error}`;\n    return msg;\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 900,
+        "wires": [
+            [
+                "0a50440b4171b586"
+            ]
+        ]
+    },
+    {
+        "id": "0a50440b4171b586",
+        "type": "sqlite",
+        "z": "a8cda6e854bd2324",
+        "mydb": "985e386c5637cf6a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 720,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a3063631ae566fb2",
+        "type": "mqtt in",
+        "z": "a8cda6e854bd2324",
+        "name": "",
+        "topic": "sensor/heartRate",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "f638a2104de91bc9",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 160,
+        "y": 60,
+        "wires": [
+            [
+                "08f3251111d58133",
+                "ba16f85c79af584d"
+            ]
+        ]
+    },
+    {
+        "id": "08f3251111d58133",
+        "type": "function",
+        "z": "a8cda6e854bd2324",
+        "name": "HeartRate",
+        "func": "try {\n    var heartRate = parseFloat(msg.payload);\n    var sensorId = 1;\n    var userId = 1;\n\n    if (isNaN(heartRate)) {\n        throw new Error(\"Invalid heart rate value\");\n    }\n\n    // Consulta para obtener el último valor del sensor de la base de datos\n    var query = `SELECT reading FROM sensor_details WHERE sensor_id = ${sensorId} ORDER BY id DESC LIMIT 1;`;\n\n    // Asumimos que se ejecuta la consulta y se obtiene el resultado\n    var lastReading = 0; // Valor por defecto si no hay registros previos\n    var result = `INSERT INTO sensor_details (sensor_id, reading, user_id) VALUES(${sensorId}, ${heartRate}, ${userId});` ;\n    /* Aquí deberías ejecutar la consulta en la base de datos y almacenar el resultado en 'result' */\n\n    // Verificar si el resultado tiene datos y asignar el último valor de lectura\n    if (result && result.length > 0) {\n        lastReading = result[0].reading;\n    }\n\n    // Solo insertar si el nuevo valor es diferente al último valor guardado y no es 0\n    if (heartRate !== lastReading && heartRate !== 0) {\n        msg.topic = `INSERT INTO sensor_details (sensor_id, reading, user_id) VALUES(${sensorId}, ${heartRate}, ${userId});`;\n    } else {\n        return null; // No hacer nada si no hay cambios significativos\n    }\n} catch (error) {\n    msg.payload = `SQL Error: ${error.message}`;\n    return msg;\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 100,
+        "wires": [
+            [
+                "a232215c4e562d23"
+            ]
+        ]
+    },
+    {
+        "id": "b46af54e0aeff573",
+        "type": "mqtt in",
+        "z": "a8cda6e854bd2324",
+        "name": "",
+        "topic": "sensor/spO2",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "f638a2104de91bc9",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 170,
+        "y": 240,
+        "wires": [
+            [
+                "4878d3223a2c1680",
+                "9bdec841a929dc32"
+            ]
+        ]
+    },
+    {
+        "id": "4878d3223a2c1680",
+        "type": "function",
+        "z": "a8cda6e854bd2324",
+        "name": "spO2",
+        "func": "try {\n    var spO2 = parseFloat(msg.payload);\n    var sensorId = 3;\n    var userId = 1;\n\n    if (isNaN(spO2)) throw \"Invalid humidity value\";\n\n    msg.topic = `INSERT INTO sensor_details (sensor_id, reading, user_id) VALUES (${sensorId}, ${spO2}, ${userId});`;\n} catch (error) {\n    msg.payload = `SQL Error: ${error}`;\n    return msg;\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 280,
+        "wires": [
+            [
+                "2f533edac103577f"
+            ]
+        ]
+    },
+    {
+        "id": "2f533edac103577f",
+        "type": "sqlite",
+        "z": "a8cda6e854bd2324",
+        "mydb": "985e386c5637cf6a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 660,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1d42792a2aec20a8",
+        "type": "mqtt in",
+        "z": "a8cda6e854bd2324",
+        "name": "",
+        "topic": "sensor/temp",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "f638a2104de91bc9",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 170,
+        "y": 460,
+        "wires": [
+            [
+                "dc78b6f81eff689d",
+                "c23551d7bed1c853",
+                "d8e646efc543972d"
+            ]
+        ]
+    },
+    {
+        "id": "dc78b6f81eff689d",
+        "type": "function",
+        "z": "a8cda6e854bd2324",
+        "name": "Temperature",
+        "func": "try {\n    var temperature = parseFloat(msg.payload);\n    var sensorId = 4;\n    var userId = 1;\n\n    if (isNaN(temperature)) throw \"Invalid temperature value\";\n\n    // Insertar la nueva lectura de temperatura\n    msg.topic = `INSERT INTO sensor_details (sensor_id, reading, user_id) VALUES (${sensorId}, ${temperature}, ${userId});`;\n\n    // Agregar función de agregado para calcular el promedio\n    msg.payload = `SELECT AVG(reading) as average_temperature FROM sensor_details WHERE sensor_id = ${sensorId};`;\n} catch (error) {\n    msg.payload = `SQL Error: ${error}`;\n    return msg;\n}\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 460,
+        "wires": [
+            [
+                "c8b6831e223c0adb",
+                "9216adc2a5daaf90"
+            ]
+        ]
+    },
+    {
+        "id": "fe77d10d7c44bbb8",
+        "type": "mqtt in",
+        "z": "a8cda6e854bd2324",
+        "name": "",
+        "topic": "sensor/stepCount",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "f638a2104de91bc9",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 160,
+        "y": 1040,
+        "wires": [
+            [
+                "a2a2bccac742c1d2",
+                "c6823cf29f083a12"
+            ]
+        ]
+    },
+    {
+        "id": "a2a2bccac742c1d2",
+        "type": "function",
+        "z": "a8cda6e854bd2324",
+        "name": "StepCount",
+        "func": "try {\n    var stepCount = parseFloat(msg.payload);\n    var sensorId = 6;\n    var userId = 1;\n\n    if (isNaN(stepCount)) throw \"Invalid humidity value\";\n\n    msg.topic = `INSERT INTO sensor_details (sensor_id, reading, user_id) VALUES (${sensorId}, ${stepCount}, ${userId});`;\n} catch (error) {\n    msg.payload = `SQL Error: ${error}`;\n    return msg;\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 1040,
+        "wires": [
+            [
+                "e556a39bc19de6ce"
+            ]
+        ]
+    },
+    {
+        "id": "e556a39bc19de6ce",
+        "type": "sqlite",
+        "z": "a8cda6e854bd2324",
+        "mydb": "985e386c5637cf6a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 700,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c6823cf29f083a12",
+        "type": "mqtt out",
+        "z": "a8cda6e854bd2324",
+        "name": "",
+        "topic": "sensor/pasos",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f638a2104de91bc9",
+        "x": 450,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "b82661269c4f335e",
+        "type": "mqtt out",
+        "z": "a8cda6e854bd2324",
+        "name": "",
+        "topic": "sensor/humedad",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f638a2104de91bc9",
+        "x": 290,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "c23551d7bed1c853",
+        "type": "mqtt out",
+        "z": "a8cda6e854bd2324",
+        "name": "",
+        "topic": "sensor/temper",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f638a2104de91bc9",
+        "x": 440,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "ba16f85c79af584d",
+        "type": "mqtt out",
+        "z": "a8cda6e854bd2324",
+        "name": "",
+        "topic": "sensor/latidos",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f638a2104de91bc9",
+        "x": 440,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "9bdec841a929dc32",
+        "type": "mqtt out",
+        "z": "a8cda6e854bd2324",
+        "name": "",
+        "topic": "sensor/oxigeno",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f638a2104de91bc9",
+        "x": 380,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "eeacde12afcf2065",
+        "type": "mqtt in",
+        "z": "a8cda6e854bd2324",
+        "name": "",
+        "topic": "sensor/rgb",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "f638a2104de91bc9",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 120,
+        "y": 1420,
+        "wires": [
+            [
+                "b616514e185fd5b0",
+                "01f4465e7e495ab4"
+            ]
+        ]
+    },
+    {
+        "id": "b616514e185fd5b0",
+        "type": "function",
+        "z": "a8cda6e854bd2324",
+        "name": "giroScopio",
+        "func": "try {\n    var girosCopio = parseFloat(msg.payload);\n    var sensorId = 7;\n    var userId = 1;\n\n    if (isNaN(girosCopio)) throw \"Invalid humidity value\";\n\n    msg.topic = `INSERT INTO sensor_details (sensor_id, reading, user_id) VALUES (${sensorId}, ${girosCopio}, ${userId});`;\n} catch (error) {\n    msg.payload = `SQL Error: ${error}`;\n    return msg;\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1420,
+        "wires": [
+            [
+                "69293ebe2fc9087c"
+            ]
+        ]
+    },
+    {
+        "id": "69293ebe2fc9087c",
+        "type": "sqlite",
+        "z": "a8cda6e854bd2324",
+        "mydb": "985e386c5637cf6a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 680,
+        "y": 1420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "01f4465e7e495ab4",
+        "type": "mqtt out",
+        "z": "a8cda6e854bd2324",
+        "name": "",
+        "topic": "sensor/rgb",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f638a2104de91bc9",
+        "x": 410,
+        "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "9216adc2a5daaf90",
+        "type": "function",
+        "z": "a8cda6e854bd2324",
+        "name": "AVG_Temp",
+        "func": "msg.topic = \"SELECT AVG(reading) AS average_reading FROM sensor_details WHERE sensor_id = 4\";\nmsg.payload = []; // No necesitas un payload adicional para la consulta\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 500,
+        "wires": [
+            [
+                "b0082296a4fff8e0"
+            ]
+        ]
+    },
+    {
+        "id": "a232215c4e562d23",
+        "type": "sqlite",
+        "z": "a8cda6e854bd2324",
+        "mydb": "985e386c5637cf6a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 660,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c8b6831e223c0adb",
+        "type": "sqlite",
+        "z": "a8cda6e854bd2324",
+        "mydb": "985e386c5637cf6a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 740,
+        "y": 400,
+        "wires": [
+            [
+                "ae931656d038e5a1"
+            ]
+        ]
+    },
+    {
+        "id": "b0082296a4fff8e0",
+        "type": "sqlite",
+        "z": "a8cda6e854bd2324",
+        "mydb": "985e386c5637cf6a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 740,
+        "y": 500,
+        "wires": [
+            [
+                "e9d40f9573dc3195",
+                "0450d82289cd442b"
+            ]
+        ]
+    },
+    {
+        "id": "e9d40f9573dc3195",
+        "type": "debug",
+        "z": "a8cda6e854bd2324",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "ae931656d038e5a1",
+        "type": "debug",
+        "z": "a8cda6e854bd2324",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "d8e646efc543972d",
+        "type": "debug",
+        "z": "a8cda6e854bd2324",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "374fa0079643ba88",
+        "type": "inject",
+        "z": "a8cda6e854bd2324",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 600,
+        "wires": [
+            [
+                "7926cf3193be7aca"
+            ]
+        ]
+    },
+    {
+        "id": "7926cf3193be7aca",
+        "type": "function",
+        "z": "a8cda6e854bd2324",
+        "name": "num_registros",
+        "func": "// Primero, contar el número de registros en la tabla sensor_details\nmsg.topic = \"SELECT COUNT(*) AS record_count FROM sensor_details;\";\nmsg.payload = [];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 600,
+        "wires": [
+            [
+                "70f554d27867e6da"
+            ]
+        ]
+    },
+    {
+        "id": "70f554d27867e6da",
+        "type": "sqlite",
+        "z": "a8cda6e854bd2324",
+        "mydb": "985e386c5637cf6a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 500,
+        "y": 600,
+        "wires": [
+            [
+                "7024512b6a7fd840",
+                "e7ccba2b4875763f"
+            ]
+        ]
+    },
+    {
+        "id": "7024512b6a7fd840",
+        "type": "debug",
+        "z": "a8cda6e854bd2324",
+        "name": "REGISTROS",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "93a4990b67f6253e",
+        "type": "sqlite",
+        "z": "a8cda6e854bd2324",
+        "mydb": "985e386c5637cf6a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 820,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "276afb76e0162ac1",
+        "type": "inject",
+        "z": "a8cda6e854bd2324",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 720,
+        "wires": [
+            [
+                "b13df9f78b6b9fe0"
+            ]
+        ]
+    },
+    {
+        "id": "b13df9f78b6b9fe0",
+        "type": "function",
+        "z": "a8cda6e854bd2324",
+        "name": "max_min",
+        "func": "// Primero, contar el número de registros en la tabla sensor_details\nmsg.topic = \"SELECT s.sensor_type, sd.sensor_id, MAX(sd.reading) AS max_value, MIN(sd.reading) AS min_value FROM sensor_details sd JOIN sensors s ON sd.sensor_id = s.id GROUP BY sd.sensor_id, s.sensor_type;\";\nmsg.payload = [];\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 720,
+        "wires": [
+            [
+                "f1fbe60ff7f18abd"
+            ]
+        ]
+    },
+    {
+        "id": "f1fbe60ff7f18abd",
+        "type": "sqlite",
+        "z": "a8cda6e854bd2324",
+        "mydb": "985e386c5637cf6a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 520,
+        "y": 720,
+        "wires": [
+            [
+                "ad68b90e61ef5e96"
+            ]
+        ]
+    },
+    {
+        "id": "ad68b90e61ef5e96",
+        "type": "debug",
+        "z": "a8cda6e854bd2324",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "0450d82289cd442b",
+        "type": "function",
+        "z": "a8cda6e854bd2324",
+        "name": "buzzer",
+        "func": "// Recibir el resultado de la consulta\nlet avg_temp = msg.payload[0].average_reading;\n\n// Verificar si el promedio supera los 28 grados\nif (avg_temp >50) {\n    msg.payload = \"ON\";  // Activar zumbador\n} else {\n    msg.payload = \"OFF\";  // Desactivar zumbador\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 560,
+        "wires": [
+            [
+                "b7f768becb8669a4",
+                "7692415f5cc085bb"
+            ]
+        ]
+    },
+    {
+        "id": "b7f768becb8669a4",
+        "type": "mqtt out",
+        "z": "a8cda6e854bd2324",
+        "name": "",
+        "topic": "sensor/buzzer",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f638a2104de91bc9",
+        "x": 1020,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "7692415f5cc085bb",
+        "type": "debug",
+        "z": "a8cda6e854bd2324",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1080,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "a03ad20b6beffa66",
+        "type": "mqtt in",
+        "z": "a8cda6e854bd2324",
+        "name": "",
+        "topic": "giroscopio/gx",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "f638a2104de91bc9",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 130,
+        "y": 1200,
+        "wires": [
+            [
+                "eb290d23580884fe",
+                "1e4c1aade9de2f95",
+                "c1637eb4566347eb"
+            ]
+        ]
+    },
+    {
+        "id": "eb290d23580884fe",
+        "type": "function",
+        "z": "a8cda6e854bd2324",
+        "name": "giroScopio",
+        "func": "try {\n    var girosCopio = parseFloat(msg.payload);\n    var sensorId = 7;\n    var userId = 1;\n\n    if (isNaN(girosCopio)) throw \"Invalid humidity value\";\n\n    msg.topic = `INSERT INTO sensor_details (sensor_id, reading, user_id) VALUES (${sensorId}, ${girosCopio}, ${userId});`;\n} catch (error) {\n    msg.payload = `SQL Error: ${error}`;\n    return msg;\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 1120,
+        "wires": [
+            [
+                "f36dcac03de7156f",
+                "370d13ae62c0a482"
+            ]
+        ]
+    },
+    {
+        "id": "f36dcac03de7156f",
+        "type": "sqlite",
+        "z": "a8cda6e854bd2324",
+        "mydb": "985e386c5637cf6a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 680,
+        "y": 1120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1e4c1aade9de2f95",
+        "type": "mqtt out",
+        "z": "a8cda6e854bd2324",
+        "name": "",
+        "topic": "sensor/giro",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f638a2104de91bc9",
+        "x": 370,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "c1637eb4566347eb",
+        "type": "debug",
+        "z": "a8cda6e854bd2324",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 320,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "370d13ae62c0a482",
+        "type": "debug",
+        "z": "a8cda6e854bd2324",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "e7ccba2b4875763f",
+        "type": "function",
+        "z": "a8cda6e854bd2324",
+        "name": "eliminar_registros",
+        "func": "// Recibir el resultado de la consulta\nlet contador = msg.payload[0].record_count; \n\n// Verificar si la consulta anterior ha devuelto un resultado\nif (contador > 12) {\n    // Eliminar los registros más antiguos, dejando los más recientes 100\n    msg.topic = \"DELETE FROM sensor_details WHERE id IN (SELECT id FROM sensor_details ORDER BY id ASC LIMIT \" + (contador - 100) + \");\";\n} else {\n    // No se elimina nada si hay 100 o menos registros\n    return null; // Detener el flujo si no hay nada que eliminar\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 660,
+        "wires": [
+            [
+                "93a4990b67f6253e"
+            ]
+        ]
+    },
+    {
+        "id": "f638a2104de91bc9",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.149.216:1883",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "985e386c5637cf6a",
+        "type": "sqlitedb",
+        "db": "C:\\sqlite\\sensors_db",
+        "mode": "RW"
+    }
+]
