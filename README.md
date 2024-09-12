@@ -79,7 +79,7 @@ _"Cangurera inteligente aspira a ser una cangurera inteligente avanzada, ùtil y
 ## Tablero Kanban
 ![Captura de pantalla 2024-06-03 142519](https://github.com/WinyRangel/IDas/assets/99991728/1d8cbdec-8984-49c2-9f23-659cb7d19aa3)
 
-## Dashboard
+## Dashboard imagenes
 ![Imagen de WhatsApp 2024-09-11 a las 23 40 14_b63117d8](https://github.com/user-attachments/assets/e24828e7-388a-4ddc-909f-0b741a36ce72)
 ![Imagen de WhatsApp 2024-09-11 a las 23 40 20_a2c691ff](https://github.com/user-attachments/assets/81bc20da-d467-40a3-a82d-c9081047b7f9)
 
