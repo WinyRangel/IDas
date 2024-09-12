@@ -75,6 +75,7 @@ _"Cangurera inteligente aspira a ser una cangurera inteligente avanzada, ùtil y
 
 ## SER
 [Winy Daniela Manzano Rangel - 12211100670](https://drive.google.com/drive/folders/1hf6th6Lo1B5DpWCJRa8G2iKDrEYQYJ4X?usp=drive_link)
+[Winy Daniela Manzano Rangel - 12211100670](https://drive.google.com/drive/folders/1fOG6K0GOuFRBzKY53ffnRpWjG-oXaqfK?usp=drive_link)
 
 ## Tablero Kanban
 ![Captura de pantalla 2024-06-03 142519](https://github.com/WinyRangel/IDas/assets/99991728/1d8cbdec-8984-49c2-9f23-659cb7d19aa3)
