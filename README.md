@@ -78,6 +78,8 @@ _"Cangurera inteligente aspira a ser una cangurera inteligente avanzada, ùtil y
 
 [Sandra Michel Hernandez Chiquito - 12211100284](https://drive.google.com/drive/folders/1fOG6K0GOuFRBzKY53ffnRpWjG-oXaqfK?usp=drive_link)
 
+[Alyne Elizabeth Rojas Gloria - 12211100348](https://drive.google.com/drive/folders/1LlCOjIq6dybNh4sna9peMvo1a8f8JaXY)
+
 ## Tablero Kanban
 ![Captura de pantalla 2024-06-03 142519](https://github.com/WinyRangel/IDas/assets/99991728/1d8cbdec-8984-49c2-9f23-659cb7d19aa3)
 
